@@ -257,7 +257,5 @@ while True:
             category = categories[labelNumber - 1] 
             dstDir = os.path.join(TRAIN_FOLDER, category) 
             shutil.move(filename, dstDir)
-            
-            #label = raw_input("Please type the class index: ")
     else:
         break
