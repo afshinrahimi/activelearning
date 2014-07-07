@@ -1,4 +1,3 @@
-'''
 Created on Jul 4, 2014
 based on http://scikit-learn.org/stable/auto_examples/document_classification_20newsgroups.html
 
@@ -24,6 +23,7 @@ samples with lowest average absolute confidence for expert labeling. This proced
 by modifying the code in benchmark function.
 
 This program requires a directory structure similar to what is shown below:
+
     mainDirectory
        train
            pos
@@ -44,6 +44,8 @@ This program requires a directory structure similar to what is shown below:
                9.txt
                10.txt
                11.txt
+               
+               
 The filenames in unlabeled should not be a duplicate of filenames in train directory because every time we label a file
 we will move that file into the corresponding class directory in train directory.
 
@@ -53,4 +55,4 @@ The classifier can also be changed to any other classifier in scikit-learn.
 
 @author: afshin rahimi
 
-'''
+
