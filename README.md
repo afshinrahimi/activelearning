@@ -1,3 +1,4 @@
+'''
 Created on Jul 4, 2014
 based on http://scikit-learn.org/stable/auto_examples/document_classification_20newsgroups.html
 
@@ -51,3 +52,5 @@ The classifier can also be changed to any other classifier in scikit-learn.
 
 
 @author: afshin rahimi
+
+'''
