@@ -1,9 +1,11 @@
 Created on Jul 4, 2014
 based on http://scikit-learn.org/stable/auto_examples/document_classification_20newsgroups.html
 
-This program implements active learning for text classification tasks with scikit-learn's LinearSVC classifier.
-Instead of using Stochastic Gradient Descent training we used the batch mode because 
-the data is not that big and accuracy is more important for us than efficiency.
+This program implements active learning (http://en.wikipedia.org/wiki/Active_learning_(machine_learning)) 
+for text classification tasks with scikit-learn's LinearSVC classifier. Despite differences this can also be called
+incremental training.
+Instead of using Stochastic Gradient Descent we used the batch mode because the data is not that big 
+and accuracy here was more of concern than efficiency.
 
 The algorithm trains the model based on a train dataset and evaluates using a test dataset.
 After each evaluation algorithm selects 2*NUM_QUESTIONS samples from unlabeled dataset in order
