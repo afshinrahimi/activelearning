@@ -1,20 +1,20 @@
 Created on Jul 4, 2014
 based on http://scikit-learn.org/stable/auto_examples/document_classification_20newsgroups.html
 
-This program implements active learning for classification tasks with scikit-learn's LinearSVC classifier.
-Instead of using a Stochastic Gradient Descent training we used the batch mode because 
+This program implements active learning for text classification tasks with scikit-learn's LinearSVC classifier.
+Instead of using Stochastic Gradient Descent training we used the batch mode because 
 the data is not that big and accuracy is more important for us than efficiency.
 
-The algorithm trains the model based on train dataset and evaluates using the test dataset.
+The algorithm trains the model based on a train dataset and evaluates using a test dataset.
 After each evaluation algorithm selects 2*NUM_QUESTIONS samples from unlabeled dataset in order
-to be labeled by a user/expert. The labeled sample is moved to the corresponding directory in
-train dataset and the model will start again training with the new improved training set.
+to be labeled by a user/expert. The labeled sample is then moved to the corresponding directory in
+the train dataset and the model will start training again with the new improved training set.
 
 The selection of unlabeled samples is based on decision_function of SVM which is
 the distance of the samples X to the separating hyperplane. This distance is between
 [-1, 1] but because we need confidence levels we use absolute values. In case the classes
-are more than two the decision function will return a confidence level for each class for each sample
-so in case we have more than 2 classes we average over the absolute values of confidence over all classes.
+are more than two, the decision function will return a confidence level for each class and for each sample
+so in case we have more than 2 classes we average over the absolute values of confidence over all the classes.
 
 We use top NUM_QUESTIONS samples with highest average absolute confidence and also top NUM_QUESTIONS
 samples with lowest average absolute confidence for expert labeling. This procedure can be easily changed
