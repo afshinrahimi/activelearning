@@ -171,7 +171,7 @@ while True:
         print("train time: %0.3fs" % train_time)
     
         t0 = time()
-        X_test = scaler.fit(X_test) # Standardizing ------------------
+        X_test = scaler.transform(X_test) # Standardizing ------------------
         pred = clf.predict(X_test) 
         test_time = time() - t0
         print("test time:  %0.3fs" % test_time)
@@ -199,7 +199,7 @@ while True:
         
         print("confidence for unlabeled data:")
         
-        X_unlabeled = scaler.fit(X_unlabeled) # Standardizing ------------------
+        X_unlabeled = scaler.transform(X_unlabeled) # Standardizing ------------------
         
         #compute absolute confidence for each unlabeled sample in each class
         confidences = np.abs(clf.decision_function(X_unlabeled))
