@@ -75,6 +75,7 @@ from sklearn import metrics
 from sklearn import cross_validation
 import itertools
 import shutil
+from sklearn import preprocessing
 
 
 from  sklearn.datasets import load_files
@@ -158,12 +159,20 @@ while True:
         print("Training: ")
         print(clf)
         t0 = time()
+        
+        # Create a scaler fitted to X_train to later standarize all the subsets with the same scale ------------------
+        scaler = preprocessing.StandardScaler(with_mean=False)
+        scaler = scaler.fit(X_train)
+
+        X_train = scaler.transform(X_train)  # Standardizing ------------------     
         clf.fit(X_train, y_train)
+        
         train_time = time() - t0
         print("train time: %0.3fs" % train_time)
     
         t0 = time()
-        pred = clf.predict(X_test)
+        X_test = scaler.fit(X_test) # Standardizing ------------------
+        pred = clf.predict(X_test) 
         test_time = time() - t0
         print("test time:  %0.3fs" % test_time)
     
@@ -189,6 +198,9 @@ while True:
         print(metrics.confusion_matrix(y_test, pred))
         
         print("confidence for unlabeled data:")
+        
+        X_unlabeled = scaler.fit(X_unlabeled) # Standardizing ------------------
+        
         #compute absolute confidence for each unlabeled sample in each class
         confidences = np.abs(clf.decision_function(X_unlabeled))
         #average abs(confidence) over all classes for each unlabeled sample (if there is more than 2 classes)
